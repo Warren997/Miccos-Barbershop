@@ -1,0 +1,613 @@
+/**************************************** Micco's Barbershop ****************************************/
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    --light-brown: white;
+    --medium-brown: #CBB682;
+    --dark-brown: #785F37;
+    overflow-x: hidden;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+
+/* dropdown-item*/
+
+.dropdown-item {
+    cursor: pointer;
+    text-align: center;
+}
+
+
+/* btn-secondary */
+
+.btn-secondary {
+    background-color: var(--dark-brown);
+    border-color: var(--dark-brown);
+}
+
+.btn-secondary:hover {
+    background-color: var(--medium-brown);
+    border-color: var(--medium-brown);
+}
+
+
+/* btn-tertiary */
+
+.btn-tertiary {
+    background-color: var(--medium-brown);
+    border-color: var(--medium-brown);
+    color: var(--light-brown);
+}
+
+.btn-tertiary:hover {
+    color: var(--light-brown);
+    background-color: var(--dark-brown);
+    border-color: var(--dark-brown);
+}
+
+.form-control {
+    border-color: var(--medium-brown);
+}
+
+
+/**************************************** Navbar ****************************************/
+
+nav {
+    width: 100%;
+    z-index: 10;
+    background-color: transparent;
+    transition: .5s;
+}
+
+.nav-img-logo {
+    height: 70px;
+    padding-top: 0;
+    filter: invert(97%) sepia(1%) saturate(166%) hue-rotate(259deg) brightness(118%) contrast(100%);
+    /*https://codepen.io/sosuke/pen/Pjoqqp - hex to filter*/
+}
+
+.nav-logo {
+    padding: 16px;
+}
+
+.navbar-brand {
+    font-family: "Rufina", serif;
+    font-size: 2.1em;
+    font-weight: bold;
+    font-family: Garamond;
+}
+
+.nav-menu {
+    margin-right: 5%;
+}
+
+.nav-ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+.nav-ul li {
+    padding: 16px;
+    text-decoration: none;
+}
+
+.nav-ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    font-family: "Rufina", serif;
+    text-transform: capitalize;
+}
+
+.nav-ul li a:hover {
+    background-color: var(--dark-brown);
+}
+
+.navbar-toggler {
+    background-color: var(--light-brown);
+}
+
+.nav-menu {
+    margin: 0px;
+}
+
+.nav-ul {
+    background-color: var(--medium-brown);
+}
+
+
+/**************************************** Home ****************************************/
+
+#home {
+    min-height: 120vh;
+    width: 100vw;
+    margin: 0;
+    background-image: linear-gradient(to right top, rgb(120, 95, 55, 1), rgb(203, 182, 130, .9)), url("../image/bg-doodle.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+.home-scissor {
+    margin-left: 30%;
+    height: 60px;
+    margin-top: 90px;
+}
+
+.home-text-name {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.home-text-name-rectangle {
+    background-color: var(--medium-brown);
+    height: 45px;
+    width: 85px;
+    position: absolute;
+    margin-right: 60px;
+}
+
+.home-text-name h5 {
+    color: var(--light-brown);
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    position: absolute;
+    z-index: 1;
+    letter-spacing: 1px;
+}
+
+.home-text-name-line {
+    position: absolute;
+    margin-left: 150px;
+    height: 1px;
+    width: 100px;
+    background-color: var(--medium-brown);
+}
+
+.home-text-motto {
+    width: 100%;
+}
+
+.home-text-motto-p {
+    font-size: 40px;
+    font-family: "Rufina", serif;
+    font-weight: 700;
+    color: var(--light-brown);
+    line-height: normal;
+}
+
+.home-text-paragraph {
+    width: 100%;
+}
+
+.home-text-paragraph-quotes {
+    line-height: 25px;
+    font-size: 16px;
+    color: var(--medium-brown);
+    padding-top: 10px;
+}
+
+.home-text-buttons {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.home-text-buttons-booking {
+    height: 50px;
+    width: 160px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-brown);
+    border: 2px solid var(--light-brown);
+    transition: 1s;
+    cursor: pointer;
+}
+
+.home-text-buttons-booking:hover {
+    background-color: transparent;
+    color: var(--light-brown);
+}
+
+.home-text-buttons-contact {
+    height: 50px;
+    width: 160px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--light-brown);
+    border-color: transparent;
+    background-color: transparent;
+    border: 2px solid var(--light-brown);
+    transition: 1s;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.home-text-buttons-contact:hover {
+    background-color: var(--light-brown);
+    color: var(--dark-brown);
+}
+
+.home-img {
+    height: 100%;
+    position: relative;
+}
+
+.home-img img {
+    background-repeat: no-repeat;
+    width: 673px;
+    height: 700px;
+}
+
+.home-img-circle {
+    clip-path: circle(50% at 50% 50%);
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    margin-top: -70px;
+    margin-left: 70px;
+    background-color: var(--medium-brown);
+    z-index: 1;
+}
+
+
+/************************************ About Us *************************************/
+
+#about {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.about-title {
+    font-family: "Rufina", serif;
+    font-weight: bold;
+    color: var(--dark-brown);
+}
+
+.about-text {
+    line-height: 1.5;
+    font-size: 16px;
+    color: #777;
+}
+
+.about-image {
+    border: 1px solid var(--dark-brown);
+}
+
+
+/**************************************** Services ****************************************/
+
+.services-title {
+    font-family: "Rufina", serif;
+    font-weight: bold;
+    color: var(--dark-brown);
+}
+
+.services-text {
+    line-height: 1.5;
+    font-size: 16px;
+    color: #777;
+}
+
+
+/**************************************** Price ****************************************/
+
+.price-title {
+    font-family: "Rufina", serif;
+    font-weight: bold;
+    color: var(--dark-brown);
+}
+
+.price-text {
+    line-height: 1.5;
+    font-size: 16px;
+    color: #777;
+}
+
+.price-content {
+    margin: auto;
+    height: 60%;
+    width: 90%;
+    margin-top: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fit, 100px);
+    grid-auto-rows: 100px;
+}
+
+.price-content>div {
+    display: flex;
+    background-color: rgb(119, 119, 119, .1);
+    transition: .5s;
+    cursor: context-menu;
+}
+
+.price-content>div:hover {
+    background-color: var(--medium-brown);
+}
+
+.price-content>div img {
+    height: 100px;
+    width: 100px;
+    outline: 2px solid var(--light-brown);
+    outline-offset: -10px;
+}
+
+.price-content>div h2 {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+.price-content>div p {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.price-content-img-text {
+    display: block;
+    margin: auto 20px;
+    color: var(--dark-brown);
+}
+
+
+/**************************************** Testimonials ****************************************/
+
+#testimonials {
+    height: 568px;
+    width: 100%;
+    background-color: coral;
+    background-image: linear-gradient(rgba( 120, 95, 55, .5), rgba( 120, 95, 55, .2), rgba( 120, 95, 55, .5)), url("../image/testimonial-img-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+}
+
+.testimonials-text,
+.testimonials-text p {
+    background-color: rgb(203, 182, 130, .9);
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: -50px;
+}
+
+.testimonial-fp {
+    height: 100px;
+    width: 100px;
+    clip-path: circle(50% at 50% 50%);
+    display: block;
+    margin: auto;
+}
+
+.checked {
+    color: var(--light-brown);
+}
+
+
+/**************************************** Barbers ****************************************/
+
+.barbers-img {
+    height: 100%;
+    width: 100%;
+    transition: 1s;
+}
+
+.barbers-img-container {
+    max-height: 396px;
+    max-width: 274px;
+    overflow: hidden;
+    outline: 2px solid var(--dark-brown);
+    outline-offset: -20px;
+}
+
+.barbers-img:hover {
+    transform: scale(1.2);
+}
+
+.barbers-title {
+    font-family: "Rufina", serif;
+    font-weight: bold;
+    color: var(--dark-brown);
+}
+
+.barbers-text {
+    line-height: 1.5;
+    font-size: 16px;
+    color: #777;
+}
+
+
+/**************************************** Reservation ****************************************/
+
+#reservation {
+    background-image: linear-gradient(to right top, rgb(120, 95, 55, .9), rgb(203, 182, 130, .9)), url("../image/bg-doodle.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 650px;
+}
+
+.reservation-title {
+    font-family: "Rufina", serif;
+    font-weight: bold;
+    color: var(--light-brown);
+}
+
+.reservation-text {
+    line-height: 1.5;
+    font-size: 16px;
+    color: #777;
+}
+
+.dropdown-reservation-input {
+    width: 100%;
+}
+
+.form-group label {
+    color: var(--light-brown);
+}
+
+
+/************************************ Map *************************************/
+
+.map {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    height: 500x;
+    width: 100%;
+}
+
+.map-container {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 3px solid var(--dark-brown);
+    border-bottom: 3px solid var(--dark-brown);
+}
+
+
+/************************************ Footer *************************************/
+
+.footer-title {
+    font-family: "Rufina", serif;
+    font-weight: bold;
+    color: var(--dark-brown);
+    font-size: 20px;
+}
+
+#contact {
+    background-color: var(--medium-brown);
+}
+
+.top-footer {
+    color: var(--dark-brown);
+}
+
+.bottom-footer {
+    background-color: var(--dark-brown);
+}
+
+
+/***************************** QR Code ************/
+
+.modal-body {
+    padding-bottom: 0px;
+}
+
+.qrcode-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.qrcode-container div {
+    width: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+#inputQR,
+#textQR {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    word-wrap: break-word;
+}
+
+#captureQR {
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    word-wrap: break-word;
+    width: 63%;
+    margin-bottom: 0px;
+}
+
+#customerDate {
+    background-color: transparent;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+/**************************************** Media Query ****************************************/
+
+
+/***************** Lg *****************/
+
+@media only screen and (min-width: 1200px) {
+    .nav-ul {
+        background-color: transparent;
+    }
+    .home-text-name {
+        padding-left: 0px;
+        justify-content: flex-start;
+    }
+    .home-text-name-rectangle {
+        margin-right: 0px;
+    }
+    .home-scissor {
+        margin-left: 0px;
+    }
+    .home-text-buttons {
+        justify-content: flex-start;
+    }
+    .home-scissor {
+        height: 80px;
+    }
+}
+
+
+/***************** Sm *****************/
+
+@media only screen and (min-width: 540px) {
+    .home-text-motto-p {
+        font-size: 50px;
+    }
+    .home-scissor {
+        margin-top: 150px;
+        height: 80px;
+    }
+}

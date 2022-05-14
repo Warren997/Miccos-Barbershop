@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Micco's Barbershop</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Bootstrap CSS & Js -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Local Css & Js-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <script defer src="js/reservation.js" type="module"></script>
+
+    <!-- Send Email Library -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("KaejigDkmy-An3iGe");
+        })();
+    </script>
+
+    <!-- This will generate the QR image -->
+    <script defer src="js/qrcode.min.js"></script>
+
+    <!-- Tab Icon-->
+    <link rel="shortcut icon" href="image/scissor-icon-tab.png">
+
+    <!-- AOS Library-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Font Rufina -->
+    <link href='https://fonts.googleapis.com/css?family=Rufina' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid var(--dark-brown);
+        }
+        
+        th,
+        td {
+            padding: 5px;
+        }
+        
+        thead {
+            background-color: var(--dark-brown);
+            color: var(--light-brown);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #ddd;
+        }
+        
+        #tbody1 tr:hover {
+            background-color: var(--medium-brown);
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <!-- Nav -->
+    <nav id="nav" class="navbar navbar-light navbar-expand-xl fixed-top">
+        <div class="container">
+            <!-- Nav Brand-->
+            <img class="nav-img-logo" src="image/mb-logo-1.svg" alt="Logo">
+            <a class="nav-logo navbar-brand text-light d-none d-md-block" href="#">Micco's Barbershop</a>
+            <!-- Burger Icon -->
+            <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Nav Collapse-->
+            <div class="nav-menu collapse navbar-collapse text-center " id="navmenu">
+                <ul class="nav-ul navbar-nav ms-auto nav-pills ">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link text-light">&#160;&#160;Home&#160;&#160;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link text-light">&#160;&#160;About&#160;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link text-light">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#price" class="nav-link text-light">&#160;&#160;Price&#160;</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#barbers" class="nav-link text-light">&#160;Barbers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link text-light">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Home -->
+    <section id="home" class="container-fluid row">
+        <!-- Home Text -->
+        <div class="col-12 col-xl-6  mx-auto m-xl-0">
+            <div class="container-xl container-fluid ms-xl-5 ps-xl-5 ps-0 ms-0 ">
+                <img class="home-scissor" src="image/scissor-icon.png">
+                <div class="home-text-name pt-3">
+                    <div class="home-text-name-rectangle pt-2 "></div>
+                    <h5 class=" ps-1 pt-2 text-xl-start">Feel Like Home</h5>
+                    <div class="home-text-name-line mt-xl-3 d-none d-xl-block"></div>
+                </div>
+                <div class="home-text-motto mt-5 ">
+                    <p class="home-text-motto-p text-center text-xl-start ">Haircut For <br>Real Gentleman</p>
+                </div>
+                <div class="home-text-paragraph container ps-xl-0">
+                    <p class=" home-text-paragraph-quotes text-xl-start text-center ">This is a barbershop, not a hair salon. You come in here not trying to impress anyone. It's a place just to talk, to hang out with the fellows, talk about sports, women, relationships.</p>
+                </div>
+                <div class="home-text-buttons  container px-xl-0 mt-4">
+                    <button id="reservationBtn" class="home-text-buttons-booking">Reservation</button>
+                    <button id="contactUsBtn" class="home-text-buttons-contact ">Contact Us</button>
+                </div>
+            </div>
+        </div>
+        <!-- Home Img -->
+        <div class="col-6 p-0 d-xl-block d-none ">
+            <div class="home-img ">
+                <img src="image/jeff-home-icon.png ">
+                <div class="home-img-circle "></div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <!-- Header -->
+            <h2 class="about-title text-center pt-5">- About Us -</h2>
+            <!-- Row 1 -->
+            <div class="row ">
+                <!-- Col-1 -->
+                <div class="col-md-6 mt-4  order-md-1 order-2">
+                    <h3 class="about-title">Location</h3>
+                    <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque totam magnam itaque nostrum excepturi accusantium impedit nam? Tempora laborum nihil voluptatum ipsum, suscipit labore cum quisquam, reiciendis nam maxime assumenda
+                        consectetur similique praesentium tenetur ex!</p>
+                    <h5 class="about-title">A Unique Experience</h5>
+                    <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque totam magnam itaque nostrum excepturi accusantium impedit nam? Tempora laborum nihil voluptatum ipsum, suscipit labore cum quisquam, reiciendis nam maxime assumenda
+                        consectetur similique praesentium tenetur ex!</p>
+                </div>
+                <!-- Col-2 -->
+                <div class="col-md-6 mt-4 order-md-12 order-1" data-aos="fade-up" data-aos-duration="1000">
+                    <img class="about-image img-fluid" src="image/about-location-img.jpeg" alt="">
+                </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="row  mb-5 pb-2">
+                <!-- Col-1 -->
+                <div class="col-md-6 mt-4  order-md-12 order-1" data-aos="fade-up" data-aos-duration="1000">
+                    <img class="about-image img-fluid" src="image/about-shop-image.jpg" alt="">
+                </div>
+                <!-- Col-2 -->
+                <div class="col-md-6 mt-4 order-md-1 order-2 ">
+                    <h3 class="about-title">Shop</h3>
+                    <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque totam magnam itaque nostrum excepturi accusantium impedit nam? Tempora laborum nihil voluptatum ipsum, suscipit labore cum quisquam, reiciendis nam maxime assumenda
+                        consectetur similique praesentium tenetur ex!</p>
+                    <h5 class="about-title">A Unique Experience</h5>
+                    <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa eaque totam magnam itaque nostrum excepturi accusantium impedit nam? Tempora laborum nihil voluptatum ipsum, suscipit labore cum quisquam, reiciendis nam maxime assumenda
+                        consectetur similique praesentium tenetur ex!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Services -->
+    <section id="services" class="py-5 ">
+        <div class="container">
+            <!-- Header -->
+            <h2 class="services-title text-center ">- Services -</h2>
+            <div class="row mt-5">
+                <!-- Color & Hair Wash-->
+                <div class="col-md-4 mt-md-0 mt-5 " data-aos="fade-up" data-aos-duration="1000">
+                    <div class="card text-center ">
+                        <img src="image/service-1.png" class="card-img-top" alt="...">
+                        <div class="card-body ">
+                            <h5 class="card-title py-3 services-title">Color & Hair Wash</h5>
+                            <p class="card-text services-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa fugiat blanditiis dolor nesciunt neque corporis nemo nisi officiis aperiam deserunt?</p>
+                            <a href="#" class="btn btn-secondary my-3">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stylish Hair Cut -->
+                <div class="col-md-4 mt-md-0 mt-5 " data-aos="fade-up" data-aos-duration="1000">
+                    <div class="card text-center ">
+                        <img src="image/service-2.png" class="card-img-top" alt="...">
+                        <div class="card-body ">
+                            <h5 class="card-title py-3 services-title">Stylish Hair Cut</h5>
+                            <p class="card-text services-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa fugiat blanditiis dolor nesciunt neque corporis nemo nisi officiis aperiam deserunt?</p>
+                            <a href="#" class="btn btn-secondary my-3">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wedding Hair -->
+                <div class="col-md-4 mt-md-0 mt-5 " data-aos="fade-up" data-aos-duration="1000">
+                    <div class="card text-center ">
+                        <img src="image/service-3.png" class="card-img-top" alt="...">
+                        <div class="card-body ">
+                            <h5 class="card-title py-3 services-title">Wedding Hair</h5>
+                            <p class="card-text services-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa fugiat blanditiis dolor nesciunt neque corporis nemo nisi officiis aperiam deserunt?</p>
+                            <a href="#" class="btn btn-secondary my-3">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Price -->
+    <section id="price" class="pb-3">
+        <div class="conatiner my-5 px-5">
+            <!-- Header -->
+            <h2 class="price-title text-center ">- Price -</h2>
+            <div class="price-content mt-5">
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-1.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Hair Cut</h2>
+                        <p>₱250</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-2.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Hair Wash</h2>
+                        <p>₱275</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-3.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Hair Color</h2>
+                        <p>₱300</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-4.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Hair Shave</h2>
+                        <p>₱300</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-5.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Hair Straight</h2>
+                        <p>₱350</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-6.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Facial</h2>
+                        <p>₱375</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-7.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Shampoo</h2>
+                        <p>₱220</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-8.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Beard Trim</h2>
+                        <p>₱420</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-9.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Beard Shave</h2>
+                        <p>₱400</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-10.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Wedding Cut</h2>
+                        <p>₱475</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-11.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Clean Up</h2>
+                        <p>₱340</p>
+                    </div>
+                </div>
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <img src="image/price-12.jpg">
+                    <div class="price-content-img-text">
+                        <h2>Massage</h2>
+                        <p>₱350</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="my-5 ">
+        <div class="container">
+            <div id="carouselExampleIndicators" class="carousel slide " data-bs-ride="carousel">
+                <div class="carousel-indicators ">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <!-- Testimonial 1 -->
+                <div class="carousel-inner ">
+                    <div class="carousel-item active">
+                        <div class="card testimonials-text ">
+                            <div class="card-body testimonials-text">
+                                <img class="testimonial-fp" src="image/testimonial-img-1.jpg" alt="">
+                                <blockquote class="blockquote testimonials-text mb-0 text-center mt-3">
+                                    <p>Great Barbershop and good barbers I feel fresh looking now</p>
+                                    <footer class="blockquote-footer">Itachi Uchiha</footer>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star "></span>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="carousel-item">
+                        <div class="card testimonials-text">
+                            <div class="card-body testimonials-text">
+                                <img class="testimonial-fp" src="image/testimonial-img-2.jpg" alt="">
+                                <blockquote class="blockquote testimonials-text mb-0 text-center mt-3">
+                                    <p>Great Barbershop and good barbers I feel fresh looking now</p>
+                                    <footer class="blockquote-footer">Levi Ackerman</footer>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="carousel-item testimonials-text">
+                        <div class="card testimonials-text">
+                            <div class="card-body">
+                                <img class="testimonial-fp" src="image/testimonial-img-3.jpg" alt="">
+                                <blockquote class="blockquote testimonials-text mb-0 text-center mt-3">
+                                    <p>Great Barbershop and good barbers I feel fresh looking now</p>
+                                    <footer class="blockquote-footer">Killua Zaoldyeck</footer>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Barbers -->
+    <section id="barbers">
+        <h2 class="barbers-title text-center pt-5">- Barbers -</h2>
+        <div class="container-fluid my-5">
+            <div class="d-flex flex-wrap justify-content-around">
+                <div class="mb-3" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="barbers-img-container">
+                        <img class="barbers-img" src="image/brb-1.jpg" alt="">
+                    </div>
+                    <h3 class="barbers-title text-center py-3">Jeff Wittek</h3>
+                </div>
+                <div class="mb-3" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="barbers-img-container">
+                        <img class="barbers-img" src="image/brb-2.jpg" alt="">
+                    </div>
+                    <h3 class="barbers-title text-center py-3">David Dobrik</h3>
+                </div>
+                <div class="mb-3" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="barbers-img-container">
+                        <img class="barbers-img" src="image/brb-3.jpg" alt="">
+                    </div>
+                    <h3 class="barbers-title text-center py-3">Nick Antonyan</h3>
+                </div>
+                <div class="mb-3" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="barbers-img-container">
+                        <img class="barbers-img" src="image/brb-4.jpg" alt="">
+                    </div>
+                    <h3 class="barbers-title text-center py-3">Nerf Wittek</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Reservation -->
+    <section id="reservation">
+        <h2 class="reservation-title text-center pt-5 ">- Reservation -</h2>
+        <div class="container pb-5 my-5 ">
+            <!-- Reservation Form -->
+            <div class="row  ">
+                <!-- Inputs Form -->
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <h4 class="text-center reservation-title">Info</h4>
+                            <!-- Name -->
+                            <div class="form-group col-12 ">
+                                <label for="inputName">Name</label>
+                                <input type="text" class="form-control" id="inputName" placeholder="Name">
+                            </div>
+                            <!-- Address -->
+                            <div class="form-group col-12 pt-3">
+                                <label for="inputAddress">Address</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Adress">
+                            </div>
+                            <!-- Phone -->
+                            <div class="form-group col-12 pt-3">
+                                <label for="inputPhone">Phone</label>
+                                <input type="tel" class="form-control" id="inputPhone" placeholder="Phone" pattern='^09[0-9]{9}' maxlength="11">
+                            </div>
+                            <!-- Email -->
+                            <div class="form-group col-12 pt-3">
+                                <label for="inputEmail">Email</label>
+                                <input id="inputEmail" type="text" class="form-control" placeholder="Email" aria-label="inputEmail" aria-describedby="button-addon2">
+                            </div>
+                            <!-- OTP -->
+                            <div class="form-group col-12 pt-4">
+                                <div class="input-group mb-3">
+                                    <input id="inputOTP" type="tel" class="form-control" placeholder="OTP" maxlength="6">
+                                    <button id="sendOTPBtn" class="btn btn-secondary" type="button">Send OTP</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Reserve Form -->
+                <div class="col">
+                    <form>
+                        <div class="row">
+                            <h4 class="text-center reservation-title">Schedule</h4>
+                            <!-- Services -->
+                            <div class="form-group col-12 ">
+                                <label>Services</label>
+                                <div class="dropdown ">
+                                    <button id="inputService" class="btn btn-tertiary dropdown-toggle dropdown-reservation-input" type="button" data-bs-toggle="dropdown" aria-expanded="false">Services</button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="inputService">
+                                        <li><a class="dropdown-item active hairCut" onclick=" document.querySelector('#inputService').innerHTML = 'Hair Cut'">Hair Cut</a></li>
+                                        <li><a class="dropdown-item hairWash" onclick=" document.querySelector('#inputService').innerHTML = 'Hair Wash'">Hair Wash</a></li>
+                                        <li><a class="dropdown-item haircolor" onclick=" document.querySelector('#inputService').innerHTML = 'Hair Color'">Hair Color</a></li>
+                                        <li><a class="dropdown-item hairShave" onclick=" document.querySelector('#inputService').innerHTML = 'Hair Shave'">Hair Shave</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item hairStraight" onclick=" document.querySelector('#inputService').innerHTML = 'Hair Straight'">Hair Straight</a></li>
+                                        <li><a class="dropdown-item facial" onclick=" document.querySelector('#inputService').innerHTML = 'Facial'">Facial</a></li>
+                                        <li><a class="dropdown-item shampoo" onclick=" document.querySelector('#inputService').innerHTML = 'Shampoo'">Shampoo</a></li>
+                                        <li><a class="dropdown-item beardtrim" onclick=" document.querySelector('#inputService').innerHTML = 'Beard Trim'">Beard Trim</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item beardShave" onclick=" document.querySelector('#inputService').innerHTML = 'Beard Shave'">Beard Shave</a></li>
+                                        <li><a class="dropdown-item weddingCut" onclick=" document.querySelector('#inputService').innerHTML = 'Wedding Cut'">Wedding Cut</a></li>
+                                        <li><a class="dropdown-item cleanUp" onclick=" document.querySelector('#inputService').innerHTML = 'Clean Up'">Clean Up</a></li>
+                                        <li><a class="dropdown-item massage" onclick=" document.querySelector('#inputService').innerHTML = 'Massage'">Massage</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Barbers -->
+                            <div class="form-group col-12 pt-3">
+                                <label>Barbers</label>
+                                <div class="dropdown ">
+                                    <button id="inputBarbers" class="btn btn-tertiary dropdown-toggle dropdown-reservation-input" type="button" data-bs-toggle="dropdown" aria-expanded="false">Barbers</button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="inputBarbers">
+                                        <li><a class="dropdown-item active" onclick=" document.querySelector('#inputBarbers').innerHTML = 'Jeff Wittek'">Jeff Wittek</a></li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputBarbers').innerHTML = 'David Dobrik'">David Dobrik</a></li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputBarbers').innerHTML = 'Nick Antonyan'">Nick Antonyan</a></li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputBarbers').innerHTML = 'Nerf Wittek'">Nerf Wittek</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Time -->
+                            <div class="form-group col-12 pt-3">
+                                <label>Time</label>
+                                <div class="dropdown ">
+                                    <button id="inputTime" class="btn btn-tertiary dropdown-toggle dropdown-reservation-input" type="button" data-bs-toggle="dropdown" aria-expanded="false">Time</button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="inputTime">
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputTime').innerHTML = 'Morning-8-9';">8-9am</a></li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputTime').innerHTML = 'Morning-9-10';">9-10am</a></li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputTime').innerHTML = 'Morning-10-11';">10-11am</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputTime').innerHTML = 'Noon-1-2';">1-2pm</a></li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputTime').innerHTML = 'Noon-2-3';">2-3pm</a></li>
+                                        <li><a class="dropdown-item" onclick=" document.querySelector('#inputTime').innerHTML = 'Noon-3-4';">3-4pm</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Date -->
+                            <div class="form-group col-12 pt-3">
+                                <label for="inputDay"> Date</label>
+                                <div class="row px-2">
+                                    <input id="inputDay" type="date" class="form-control btn-tertiary col" placeholder="Data gg/mm/aaaa">
+                                    <button type="button" class="btn btn-secondary col" data-bs-toggle="modal" data-bs-target="#scheduleModal">
+                                        View Schedule
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Reservation Btn -->
+                            <div class="form-group col-12 pt-4">
+                                <button id="reservationSubmitBtn" type="button" class="btn btn-secondary btn-block" style="width: 100%;">Reserve</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Reserve Form End -->
+            </div>
+            <!-- Submit Form -->
+        </div>
+        <!-- Conteiner End -->
+    </section>
+    <!-- End of Reservation -->
+
+
+
+    <!-- #Map -->
+    <section class="map">
+        <h2 class="reservation-title text-center py-5">- Location -</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.244879295813!2d120.93906001483808!3d14.413042289922155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d2ff6f639d33%3A0xecd62f7a2a4e499e!2sRobinsons%20Place%20Imus!5e0!3m2!1sen!2sph!4v1645929340031!5m2!1sen!2sph"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+
+
+    <!-- Contact -->
+    <footer id="contact" class="text-center text-lg-start  ">
+        <!-- Grid container -->
+        <div class="container p-4 pb-4 top-footer">
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!-- Barbershop info -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold footer-title">
+                            Micco's Barbershop
+                        </h6>
+                        <p>
+                            Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+                    <!-- Top Service -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold footer-title">Top Services</h6>
+                        <p>
+                            <a class=" text-decoration-none" style="color: #785F37;">Hair Cut</a>
+                        </p>
+                        <p>
+                            <a class=" text-decoration-none" style="color: #785F37;">Hair Shave</a>
+                        </p>
+                        <p>
+                            <a class=" text-decoration-none" style="color: #785F37;">Beard Shave</a>
+                        </p>
+                        <p>
+                            <a class=" text-decoration-none" style="color: #785F37;">Clean Up</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+                    <!-- Grid column -->
+                    <hr class="w-100 clearfix d-md-none" />
+                    <!-- Contact -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold footer-title">Contact</h6>
+                        <p><i class="fas fa-home mr-3 "></i> Emilio Aguinaldo Hwy, Imus, 4103 Cavite</p>
+                        <p><i class="fas fa-envelope mr-3 "></i> info@gmail.com</p>
+                        <p><i class="fas fa-phone mr-3 "></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print mr-3 "></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Follow Us -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold footer-title">Follow us</h6>
+                        <!-- Facebook -->
+                        <a class="btn btn-primary btn-floating m-1 " style="background-color: #3b5998; width: 40px;" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+                        <!-- Twitter -->
+                        <a class="btn btn-primary btn-floating m-1 " style="background-color: #55acee; width: 40px;" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+                        <!-- Google -->
+                        <a class="btn btn-primary btn-floating m-1 " style="background-color: #dd4b39; width: 40px;" href="#!" role="button"><i class="fab fa-google"></i></a>
+                        <!-- Instagram -->
+                        <a class="btn btn-primary btn-floating m-1 " style="background-color: #ac2bac; width: 40px;" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+                        <!-- Linkedin -->
+                        <a class="btn btn-primary btn-floating m-1 " style="background-color: #0082ca; width: 40px;" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- Github -->
+                        <a class="btn btn-primary btn-floating m-1 " style="background-color: #333333; width: 40px;" href="#!" role="button"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-4 text-light bottom-footer">
+            © 2022 Copyright:
+            <a class="text-white text-decoration-none" href="#!">Micco's Barbershop</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+
+    <!-- Modal QR Code -->
+    <div class="modal fade" id="modalQR" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">QR Code</h5>
+                    <button type="button" id="restartPageXBtn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="qrcode-container">
+                        <div>
+                            <input name="qrcode" type="text" id="inputQR" disabled="disable" />
+                        </div>
+                        <br/>
+                        <div>
+                            <div id="qrcode"></div>
+                            <input id="customerDate" disabled="disable"></input>
+                        </div>
+                        <div>
+                            <p id="captureQR">Take a picture or screenshot of this QR Code, If camera unavailable just write down the code</p>
+                        </div>
+                        <div class="p-0">
+                            <input id="textQR" disabled="disable"></input>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" id="restartPageCloseBtn" class="btn btn-secondary " data-bs-dismiss="modal" aria-label="Close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <!-- Schedule Modal -->
+    <div class="modal fade w-80" id="scheduleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scheduleModalLabel">Unavailable Schedule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Schedule Table -->
+                    <div class="container-fluid mt-3 mb-5 px-5 d-flex justify-content-center">
+                        <!-- Table -->
+                        <table id="scheduleTable" class=" my-1 ">
+                            <thead>
+                                <th style="width: 250px; text-align: center;" class="p-2">Date</th>
+                            </thead>
+                            <tbody id="tbody1"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Internal Js -->
+
+    <script>
+        //Animation On Scoll Init
+        AOS.init();
+
+        //#reservationBtn go to #reservation
+        document.querySelector('#reservationBtn').addEventListener('click', function() {
+            $('html,body').animate({
+                scrollTop: $("#reservation").offset().top
+            }, 'slow');
+        })
+
+        //#contactUsBtn go to #contact
+        document.querySelector('#contactUsBtn').addEventListener('click', function() {
+            $('html,body').animate({
+                scrollTop: document.body.scrollHeight
+            }, "slow");
+        })
+
+        //Onscroll Background
+        window.addEventListener("scroll", function(event) {
+            var top = this.scrollY
+            if (top > 0) {
+                document.querySelector('#nav').style.backgroundColor = "rgb(203, 182, 130, .9)";
+            }
+            if (top == 0) {
+                document.querySelector('#nav').style.backgroundColor = "transparent";
+            }
+        }, false);
+    </script>
+
+    <script src="jsBarberPage/pendingSched-reservation.js" type="module"></script>
+
+
+
+</body>
+
+</html>

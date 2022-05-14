@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micco's Barbershop</title>
+
+    <!-- Tab Icon-->
+    <link rel="shortcut icon" href="image/scissor-icon-tab.png">
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Registration JS -->
+    <script defer src="js/registration.js" type="module"></script>
+
+    <!-- Encryption Pass-->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <style>
+        body {
+            background-image: linear-gradient(to right top, rgb(120, 95, 55, .9), rgb(203, 182, 130, .9)), url("image/bg-doodle.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .form-label {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Registration Container -->
+    <section class="container vh-100 ">
+        <div class="container py-5 h-100 ">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-6 d-none d-md-block">
+                                <div class="card-body p-4  p-lg-5 text-black">
+                                    <form>
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create an Account</h5>
+                                        <!-- Username Textbox-->
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="regUsername" class="form-control form-control-lg" placeholder="Username" />
+                                            <label class="form-label" for="regUsername">Should be 6 characters</label>
+                                        </div>
+                                        <!-- Email Textbox-->
+                                        <div class="form-outline mb-4">
+                                            <input type="email" id="regEmail" class="form-control form-control-lg" placeholder="Email" />
+                                            <label class="form-label" for="regEmail">Gmail, Yahoo, & Outlook</label>
+                                        </div>
+                                        <!-- Password Textbox-->
+                                        <div class="form-outline ">
+                                            <input type="text" id="regPassword" class="form-control form-control-lg" placeholder="Password" />
+                                            <label class="form-label" for="regPassword">Uppercase, Lowercase, & Numbers</label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 d-flex align-items-center">
+                                <div class="card-body p-4  p-lg-5 text-black">
+                                    <form>
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">User Info</h5>
+                                        <!-- Name Textbox-->
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="regName" class="form-control form-control-lg" placeholder="Name" />
+                                            <label class="form-label" for="regUserName">No numbers</label>
+                                        </div>
+                                        <!-- Address Textbox-->
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="regAddress" class="form-control form-control-lg" placeholder="Address" />
+                                            <label class="form-label" for="regAddress">Your address</label>
+                                        </div>
+                                        <!-- Phone Textbox-->
+                                        <div class="form-outline">
+                                            <input type="tel" id="regPhone" class="form-control form-control-lg" pattern='^09[0-9]{9}' maxlength="11" placeholder="Phone" />
+                                            <label class="form-label" for="regPhone">PH phone number</label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-5 pt-0">
+                            <!-- Add Account -->
+                            <div class="row">
+                                <div class="col mb-4" id="regAdd">
+                                    <button class="btn btn-dark btn-lg btn-block" type="button">Add</button>
+                                </div>
+                                <div class="col ">
+                                    <a class="col small text-muted d-flex justify-content-end " data-bs-toggle="modal" data-bs-target="#signinBarbersModal" style="cursor: pointer;">Go to Receptionist Page</a>
+                                </div>
+                            </div>
+                            <!-- Link -->
+                            <div class="row">
+                                <div class="col">
+                                    <a class="col small text-muted" href="index.html">Back to Log in page</a>
+                                </div>
+                                <div class="col text-end">
+                                    <a id="goAdminPage" class="col small text-muted d-flex justify-content-end " data-bs-toggle="modal" data-bs-target="#signinAdminModal" style="cursor: pointer;">Go to Admin page</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Modal Admin -->
+    <div class="modal fade" id="signinAdminModal" tabindex="-1" aria-labelledby="signinAdminModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signinAdminModalLabel">Sign in as Admin&nbsp; &nbsp; <span class="signup-title text-danger"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <!-- Admin Username -->
+                        <div class="form-outline my-4">
+                            <input type="text" id="adminUsername" class="form-control form-control-lg" />
+                            <label class="form-label" for="adminUsername">Username</label>
+                        </div>
+                        <!-- Admin Password -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="adminPassword" class="form-control form-control-lg" />
+                            <label class="form-label" for="adminPassword">Password</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="signinAsAdminBtn" type="button" class="btn btn-primary">Sign in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Barbers -->
+    <div class="modal fade" id="signinBarbersModal" tabindex="-1" aria-labelledby="signinBarbersModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signinBarbersModalLabel">Sign in as Receptionist&nbsp; &nbsp; <span class="signup-title-barber text-danger"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <!-- Barbers Username -->
+                        <div class="form-outline my-4">
+                            <input type="text" id="BarbersUsername" class="form-control form-control-lg" />
+                            <label class="form-label" for="BarbersUsername">Username</label>
+                        </div>
+                        <!-- Barbers Password -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="BarbersPassword" class="form-control form-control-lg" />
+                            <label class="form-label" for="BarbersPassword">Password</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="signinAsBarberBtn" type="button" class="btn btn-primary">Sign in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        //Timer
+        function startTimer() {
+            var presentTime = document.querySelector('.signup-title').innerHTML;
+            var timeArray = presentTime.split(/[:]+/);
+            var m = timeArray[0];
+            var s = checkSecond((timeArray[1] - 1));
+            if (s == 59) {
+                m = m - 1
+            }
+            if (m < 0) {
+                return
+            }
+            document.querySelector('.signup-title').innerHTML =
+                m + ":" + s;
+            console.log(m)
+            setTimeout(startTimer, 1000);
+        }
+
+        function checkSecond(sec) {
+            if (sec < 10 && sec >= 0) {
+                sec = "0" + sec
+            }; // add zero in front of numbers < 10
+            if (sec < 0) {
+                sec = "59"
+            };
+            return sec;
+        }
+
+        var logUsername = document.querySelector('#adminUsername');
+        var logPassword = document.querySelector('#adminPassword');
+        var logLoginBtn = document.getElementById('signinAsAdminBtn');
+
+        //Log in attempts
+        var loginAttemptAdmin = 3;
+
+
+        // ----------------------- Log in as Admin ------------------------------//
+
+        let adminUsername = "Admin";
+        let adminPassword = "Admin123";
+
+
+        // -------- Sign in as Admin Event -------- //
+        document.querySelector('#signinAsAdminBtn').addEventListener('click', function() {
+
+            if (loginAttemptAdmin <= 0) {
+                alert('ERROR: Too many log in attempts. Please try again after 5 minutes')
+                    //Hide Login Btn
+                document.getElementById('signinAsAdminBtn').style.display = 'none';
+                logUsername.disabled = true;
+                logPassword.disabled = true;
+                //Start Countdown at Title
+                document.querySelector('.signup-title ').innerHTML = 4 + ":" + 59;
+                startTimer();
+                //Start Countdown
+                var myTimeout = setTimeout(myGreeting, 302000); //300000 = 5 minutes // 4:59 = 302000
+                //Reset Login Attempts 
+                function myGreeting() {
+                    alert('You can log in again!')
+                        //Bring Back Login Btn
+                    document.getElementById('signinAsAdminBtn').style.display = 'inline-block';
+                    logUsername.disabled = false;
+                    logPassword.disabled = false;
+                    loginAttemptAdmin = 3;
+                }
+            } else {
+                //Sign In as Admin
+                if (adminUsername == logUsername.value && adminPassword == logPassword.value) {
+                    logUsername.value = '';
+                    logPassword.value = '';
+                    //window.location = "adminPage.html";
+                    window.open('adminPage.html', '_blank').focus();
+                    window.location.reload();
+                } else if (logUsername.value == "" || logPassword.value == "") {
+                    alert("Please fill up the Username and Password as Admin\nYou only have " + loginAttemptAdmin + " log in attempts")
+                        //Log in attempt deduct
+                    loginAttemptAdmin -= 1;
+                } else {
+                    alert("Wrong Username or Password!\nYou only have " + loginAttemptAdmin + " log in attempts")
+                        //Log in attempt deduct
+                    loginAttemptAdmin -= 1;
+                }
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>
